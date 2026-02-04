@@ -29,7 +29,7 @@ export const products: Product[] = [
     description: "Tractor de alta potencia con transmisión powershift y sistema hidráulico de última generación. Ideal para trabajos pesados.",
     price: "USD 185.000",
     specs: ["260 HP", "Powershift 19x6", "Cabina Premium", "GPS Integrado"],
-    image: "/images/productos/tractor-t7-260.jpg",
+    image: "/images/hero-tractor.png",
     featured: true,
     isNew: true,
   },
