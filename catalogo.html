@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogo - AgroMaq</title>
+  <meta name="description" content="Explora nuestro catalogo completo de maquinaria agricola. Tractores, cosechadoras, sembradoras y mas.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: '#f7f7f7',
+            foreground: '#1a1a1a',
+            card: '#ffffff',
+            'card-foreground': '#1a1a1a',
+            primary: '#dc2626',
+            'primary-foreground': '#fafafa',
+            secondary: '#1f1f1f',
+            'secondary-foreground': '#fafafa',
+            muted: '#e5e5e5',
+            'muted-foreground': '#737373',
+            accent: '#991b1b',
+            'accent-foreground': '#fafafa',
+            border: '#d4d4d4',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-background font-sans">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="bg-primary p-2 rounded-lg">
+            <svg class="h-6 w-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <circle cx="5.5" cy="17.5" r="2.5"/>
+              <circle cx="18.5" cy="17.5" r="3.5"/>
+              <path d="M15 17.5H8M3 12V6h9l3 4h4v3"/>
+              <path d="M8 12V8h4"/>
+            </svg>
+          </div>
+          <span class="text-xl lg:text-2xl font-bold text-foreground">AgroMaq</span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-foreground/80 hover:text-primary transition-colors font-medium">Inicio</a>
+          <a href="catalogo.html" class="text-primary font-medium">Catalogo</a>
+          <a href="contacto.html" class="text-foreground/80 hover:text-primary transition-colors font-medium">Contacto</a>
+        </nav>
+
+        <div class="hidden md:block">
+          <a href="contacto.html" class="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+            Solicitar Cotizacion
+          </a>
+        </div>
+
+        <button id="menuToggle" class="md:hidden p-2 text-foreground" aria-label="Toggle menu">
+          <svg id="menuIcon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="closeIcon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div id="mobileMenu" class="md:hidden py-4 border-t border-border hidden">
+        <nav class="flex flex-col gap-4">
+          <a href="index.html" class="text-foreground/80 hover:text-primary transition-colors font-medium py-2">Inicio</a>
+          <a href="catalogo.html" class="text-primary font-medium py-2">Catalogo</a>
+          <a href="contacto.html" class="text-foreground/80 hover:text-primary transition-colors font-medium py-2">Contacto</a>
+          <a href="contacto.html" class="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors text-center mt-2">
+            Solicitar Cotizacion
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-20">
+    <!-- Hero -->
+    <section class="bg-foreground py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold text-white">Catalogo de Maquinaria</h1>
+        <p class="mt-4 text-lg text-white/70 max-w-2xl mx-auto">
+          Explora nuestra amplia seleccion de equipos agricolas de las mejores marcas del mercado.
+        </p>
+      </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="py-12 lg:py-16 bg-background">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Filters -->
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
+          <!-- Search -->
+          <div class="relative flex-1 max-w-md">
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Buscar por nombre, marca..."
+              class="w-full pl-12 pr-4 py-3 border border-border rounded-lg bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+            >
+            <button id="clearSearch" class="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground hidden">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Category Filters -->
+          <div class="flex flex-wrap gap-2" id="categoryFilters">
+            <!-- Categories will be loaded via JS -->
+          </div>
+        </div>
+
+        <!-- Results Count -->
+        <div class="mb-6">
+          <p class="text-muted-foreground" id="resultsCount">Mostrando 12 productos</p>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="productsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Products will be loaded via JavaScript -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden text-center py-16">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-muted rounded-full mb-4">
+            <svg class="h-8 w-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-foreground">No se encontraron resultados</h3>
+          <p class="text-muted-foreground mt-2">Intenta con otros terminos de busqueda o categoria.</p>
+          <button id="resetFilters" class="mt-4 text-primary font-medium hover:underline">
+            Limpiar filtros
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-foreground text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div class="lg:col-span-1">
+          <a href="index.html" class="flex items-center gap-2 mb-4">
+            <div class="bg-primary p-2 rounded-lg">
+              <svg class="h-6 w-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <circle cx="5.5" cy="17.5" r="2.5"/>
+                <circle cx="18.5" cy="17.5" r="3.5"/>
+                <path d="M15 17.5H8M3 12V6h9l3 4h4v3"/>
+                <path d="M8 12V8h4"/>
+              </svg>
+            </div>
+            <span class="text-xl font-bold">AgroMaq</span>
+          </a>
+          <p class="text-white/70 leading-relaxed">
+            Lider en venta de maquinaria agricola con mas de 25 anos de experiencia en el sector.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Navegacion</h3>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-white/70 hover:text-white transition-colors">Inicio</a></li>
+            <li><a href="catalogo.html" class="text-white/70 hover:text-white transition-colors">Catalogo</a></li>
+            <li><a href="contacto.html" class="text-white/70 hover:text-white transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Categorias</h3>
+          <ul class="space-y-3">
+            <li><a href="catalogo.html?categoria=tractores" class="text-white/70 hover:text-white transition-colors">Tractores</a></li>
+            <li><a href="catalogo.html?categoria=cosechadoras" class="text-white/70 hover:text-white transition-colors">Cosechadoras</a></li>
+            <li><a href="catalogo.html?categoria=sembradoras" class="text-white/70 hover:text-white transition-colors">Sembradoras</a></li>
+            <li><a href="catalogo.html?categoria=pulverizadoras" class="text-white/70 hover:text-white transition-colors">Pulverizadoras</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Contacto</h3>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-white/70">
+              <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <span>+54 11 4567-8900</span>
+            </li>
+            <li class="flex items-center gap-3 text-white/70">
+              <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              <span>ventas@agromaq.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-white/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/60 text-sm">&copy; 2026 AgroMaq. Todos los derechos reservados.</p>
+        <div class="flex gap-6 text-sm">
+          <a href="#" class="text-white/60 hover:text-white transition-colors">Terminos y Condiciones</a>
+          <a href="#" class="text-white/60 hover:text-white transition-colors">Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Modal -->
+  <div id="productModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onclick="if(event.target === this) closeProductModal()">
+    <div class="bg-card rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between p-4 border-b border-border">
+        <div>
+          <p class="text-sm text-muted-foreground" id="modalProductBrand">Marca</p>
+          <h2 class="text-xl font-bold text-foreground" id="modalProductName">Nombre del Producto</h2>
+        </div>
+        <button onclick="closeProductModal()" class="p-2 hover:bg-muted rounded-lg transition-colors">
+          <svg class="h-6 w-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Modal Content -->
+      <div class="overflow-y-auto max-h-[calc(90vh-80px)]">
+        <div class="grid md:grid-cols-2 gap-6 p-6">
+          <!-- Gallery Section -->
+          <div class="space-y-4">
+            <!-- Main Image -->
+            <div class="relative aspect-[4/3] bg-muted rounded-xl overflow-hidden">
+              <img id="modalMainImage" src="" alt="Producto" class="w-full h-full object-cover">
+              <!-- Navigation Arrows -->
+              <button onclick="prevGalleryImage()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-colors">
+                <svg class="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+              </button>
+              <button onclick="nextGalleryImage()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-colors">
+                <svg class="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+              <!-- Counter -->
+              <div class="absolute bottom-2 right-2 bg-black/60 text-white text-sm px-3 py-1 rounded-full" id="galleryCounter">1 / 4</div>
+            </div>
+            
+            <!-- Thumbnails -->
+            <div id="galleryThumbnails" class="grid grid-cols-4 gap-2">
+              <!-- Thumbnails will be generated by JS -->
+            </div>
+          </div>
+          
+          <!-- Info Section -->
+          <div class="space-y-6">
+            <!-- Price -->
+            <div class="bg-primary/10 rounded-xl p-4">
+              <p class="text-sm text-muted-foreground">Precio desde</p>
+              <p class="text-3xl font-bold text-primary" id="modalProductPrice">USD 0</p>
+            </div>
+            
+            <!-- Specs -->
+            <div>
+              <h3 class="font-semibold text-foreground mb-3">Especificaciones Principales</h3>
+              <div id="modalProductSpecs" class="flex flex-wrap gap-2">
+                <!-- Specs will be generated by JS -->
+              </div>
+            </div>
+            
+            <!-- Description -->
+            <div>
+              <h3 class="font-semibold text-foreground mb-3">Descripcion Detallada</h3>
+              <p class="text-muted-foreground leading-relaxed" id="modalProductDescription">
+                Descripcion del producto...
+              </p>
+            </div>
+            
+            <!-- Features -->
+            <div>
+              <h3 class="font-semibold text-foreground mb-3">Caracteristicas</h3>
+              <ul id="modalProductFeatures" class="space-y-2 text-muted-foreground">
+                <!-- Features will be generated by JS -->
+              </ul>
+            </div>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-4">
+              <a id="modalCotizarBtn" href="contacto.html" class="flex-1 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-center flex items-center justify-center gap-2">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+                Solicitar Cotizacion
+              </a>
+              <a href="tel:+541145678900" class="flex-1 bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-secondary/80 transition-colors text-center flex items-center justify-center gap-2">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+                Llamar Ahora
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/products.js"></script>
+  <script src="js/catalog.js"></script>
+</body>
+</html>

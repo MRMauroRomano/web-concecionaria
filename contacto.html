@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - AgroMaq</title>
+  <meta name="description" content="Contacta con nuestro equipo de asesores. Solicita informacion, cotizaciones o agenda una visita.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: '#f7f7f7',
+            foreground: '#1a1a1a',
+            card: '#ffffff',
+            'card-foreground': '#1a1a1a',
+            primary: '#dc2626',
+            'primary-foreground': '#fafafa',
+            secondary: '#1f1f1f',
+            'secondary-foreground': '#fafafa',
+            muted: '#e5e5e5',
+            'muted-foreground': '#737373',
+            accent: '#991b1b',
+            'accent-foreground': '#fafafa',
+            border: '#d4d4d4',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background font-sans">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="bg-primary p-2 rounded-lg">
+            <svg class="h-6 w-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <circle cx="5.5" cy="17.5" r="2.5"/>
+              <circle cx="18.5" cy="17.5" r="3.5"/>
+              <path d="M15 17.5H8M3 12V6h9l3 4h4v3"/>
+              <path d="M8 12V8h4"/>
+            </svg>
+          </div>
+          <span class="text-xl lg:text-2xl font-bold text-foreground">AgroMaq</span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-foreground/80 hover:text-primary transition-colors font-medium">Inicio</a>
+          <a href="catalogo.html" class="text-foreground/80 hover:text-primary transition-colors font-medium">Catalogo</a>
+          <a href="contacto.html" class="text-primary font-medium">Contacto</a>
+        </nav>
+
+        <div class="hidden md:block">
+          <a href="contacto.html" class="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+            Solicitar Cotizacion
+          </a>
+        </div>
+
+        <button id="menuToggle" class="md:hidden p-2 text-foreground" aria-label="Toggle menu">
+          <svg id="menuIcon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="closeIcon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div id="mobileMenu" class="md:hidden py-4 border-t border-border hidden">
+        <nav class="flex flex-col gap-4">
+          <a href="index.html" class="text-foreground/80 hover:text-primary transition-colors font-medium py-2">Inicio</a>
+          <a href="catalogo.html" class="text-foreground/80 hover:text-primary transition-colors font-medium py-2">Catalogo</a>
+          <a href="contacto.html" class="text-primary font-medium py-2">Contacto</a>
+          <a href="contacto.html" class="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors text-center mt-2">
+            Solicitar Cotizacion
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-20">
+    <!-- Hero -->
+    <section class="bg-foreground py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold text-white">Contactanos</h1>
+        <p class="mt-4 text-lg text-white/70 max-w-2xl mx-auto">
+          Estamos aqui para ayudarte. Solicita informacion, cotizaciones o agenda una visita a nuestro showroom.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 lg:py-24 bg-background">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          <!-- Contact Form -->
+          <div class="bg-card rounded-2xl p-8 lg:p-10 border border-border">
+            <!-- Form -->
+            <div id="contactForm">
+              <h2 class="text-2xl font-bold text-foreground mb-6">Envianos un Mensaje</h2>
+              <form id="form" class="space-y-6">
+                <div class="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label for="nombre" class="block text-sm font-medium text-foreground mb-2">Nombre Completo *</label>
+                    <input type="text" id="nombre" name="nombre" required 
+                      class="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      placeholder="Juan Perez">
+                  </div>
+                  <div>
+                    <label for="email" class="block text-sm font-medium text-foreground mb-2">Email *</label>
+                    <input type="email" id="email" name="email" required 
+                      class="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      placeholder="juan@ejemplo.com">
+                  </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label for="telefono" class="block text-sm font-medium text-foreground mb-2">Telefono</label>
+                    <input type="tel" id="telefono" name="telefono" 
+                      class="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      placeholder="+54 11 1234-5678">
+                  </div>
+                  <div>
+                    <label for="producto" class="block text-sm font-medium text-foreground mb-2">Producto de Interes</label>
+                    <input type="text" id="producto" name="producto" 
+                      class="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      placeholder="Ej: Tractor T7 260">
+                  </div>
+                </div>
+
+                <div>
+                  <label for="mensaje" class="block text-sm font-medium text-foreground mb-2">Mensaje *</label>
+                  <textarea id="mensaje" name="mensaje" required rows="5"
+                    class="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+                    placeholder="Cuentanos en que podemos ayudarte..."></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn"
+                  class="w-full bg-primary text-primary-foreground px-6 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                  </svg>
+                  Enviar Mensaje
+                </button>
+              </form>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="hidden text-center py-12">
+              <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6">
+                <svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold text-foreground">Mensaje Enviado!</h2>
+              <p class="mt-4 text-muted-foreground">
+                Gracias por contactarnos. Nuestro equipo se comunicara contigo a la brevedad.
+              </p>
+              <button id="sendAnother" class="mt-6 text-primary font-medium hover:underline">
+                Enviar otro mensaje
+              </button>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h2 class="text-2xl font-bold text-foreground mb-8">Informacion de Contacto</h2>
+            <div class="space-y-6">
+              <!-- Phone -->
+              <div class="flex gap-4 p-6 bg-card rounded-xl border border-border hover:shadow-md transition-shadow">
+                <div class="bg-primary/10 p-3 rounded-xl h-fit">
+                  <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-foreground">Telefono</h3>
+                  <p class="text-muted-foreground mt-1">+54 11 4567-8900</p>
+                  <p class="text-muted-foreground">+54 11 4567-8901</p>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="flex gap-4 p-6 bg-card rounded-xl border border-border hover:shadow-md transition-shadow">
+                <div class="bg-primary/10 p-3 rounded-xl h-fit">
+                  <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-foreground">Email</h3>
+                  <p class="text-muted-foreground mt-1">ventas@agromaq.com</p>
+                  <p class="text-muted-foreground">soporte@agromaq.com</p>
+                </div>
+              </div>
+
+              <!-- Address -->
+              <div class="flex gap-4 p-6 bg-card rounded-xl border border-border hover:shadow-md transition-shadow">
+                <div class="bg-primary/10 p-3 rounded-xl h-fit">
+                  <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-foreground">Direccion</h3>
+                  <p class="text-muted-foreground mt-1">Ruta Provincial 5, Km 120</p>
+                  <p class="text-muted-foreground">Buenos Aires, Argentina</p>
+                </div>
+              </div>
+
+              <!-- Hours -->
+              <div class="flex gap-4 p-6 bg-card rounded-xl border border-border hover:shadow-md transition-shadow">
+                <div class="bg-primary/10 p-3 rounded-xl h-fit">
+                  <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-foreground">Horarios</h3>
+                  <p class="text-muted-foreground mt-1">Lunes a Viernes: 8:00 - 18:00</p>
+                  <p class="text-muted-foreground">Sabados: 8:00 - 13:00</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="mt-8 bg-muted rounded-2xl overflow-hidden aspect-video flex items-center justify-center border border-border">
+              <div class="text-center p-8">
+                <svg class="h-12 w-12 text-muted-foreground mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                <p class="text-muted-foreground">
+                  Ruta Provincial 5, Km 120<br>
+                  Buenos Aires, Argentina
+                </p>
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" 
+                  class="inline-block mt-4 text-primary font-medium hover:underline">
+                  Ver en Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-foreground text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div class="lg:col-span-1">
+          <a href="index.html" class="flex items-center gap-2 mb-4">
+            <div class="bg-primary p-2 rounded-lg">
+              <svg class="h-6 w-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <circle cx="5.5" cy="17.5" r="2.5"/>
+                <circle cx="18.5" cy="17.5" r="3.5"/>
+                <path d="M15 17.5H8M3 12V6h9l3 4h4v3"/>
+                <path d="M8 12V8h4"/>
+              </svg>
+            </div>
+            <span class="text-xl font-bold">AgroMaq</span>
+          </a>
+          <p class="text-white/70 leading-relaxed">
+            Lider en venta de maquinaria agricola con mas de 25 anos de experiencia en el sector.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Navegacion</h3>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-white/70 hover:text-white transition-colors">Inicio</a></li>
+            <li><a href="catalogo.html" class="text-white/70 hover:text-white transition-colors">Catalogo</a></li>
+            <li><a href="contacto.html" class="text-white/70 hover:text-white transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Categorias</h3>
+          <ul class="space-y-3">
+            <li><a href="catalogo.html?categoria=tractores" class="text-white/70 hover:text-white transition-colors">Tractores</a></li>
+            <li><a href="catalogo.html?categoria=cosechadoras" class="text-white/70 hover:text-white transition-colors">Cosechadoras</a></li>
+            <li><a href="catalogo.html?categoria=sembradoras" class="text-white/70 hover:text-white transition-colors">Sembradoras</a></li>
+            <li><a href="catalogo.html?categoria=pulverizadoras" class="text-white/70 hover:text-white transition-colors">Pulverizadoras</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Contacto</h3>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-white/70">
+              <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <span>+54 11 4567-8900</span>
+            </li>
+            <li class="flex items-center gap-3 text-white/70">
+              <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              <span>ventas@agromaq.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-white/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/60 text-sm">&copy; 2026 AgroMaq. Todos los derechos reservados.</p>
+        <div class="flex gap-6 text-sm">
+          <a href="#" class="text-white/60 hover:text-white transition-colors">Terminos y Condiciones</a>
+          <a href="#" class="text-white/60 hover:text-white transition-colors">Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/contact.js"></script>
+</body>
+</html>
